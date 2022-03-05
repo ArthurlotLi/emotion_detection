@@ -1,0 +1,12 @@
+['cecilia', 'dailydialog', 'emotionstimulus', 'isear', 'meld', 'smile', 'wassa2017']
+
+(14603, 2)
+
+6    10313
+0     2045
+3      631
+1      584
+2      429
+5      404
+4      197
+Name: solution, dtype: int64
