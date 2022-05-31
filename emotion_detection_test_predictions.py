@@ -9,7 +9,7 @@ from emotion_detection_harness import *
 _model_variants_location = "models"
 _test_csv_name = "test_annotated.csv"
 _max_seq_length = 256
-_dataloader_batch_size = 22
+_dataloader_batch_size = 32
 
 def generate_test_csv(model, tokenizer, device, test_set):
   # Prepare the Test Dataloader. 
@@ -39,7 +39,7 @@ def generate_test_csv(model, tokenizer, device, test_set):
     logits = outputs[0]
     logits = logits.detach().cpu().numpy()
     predictions = np.argmax(logits, axis=1).flatten()
-    total_predictions.append(predictions.tolist())
+    total_predictions += predictions.tolist()
     labels = labels.numpy().flatten()
     # Accuracy is # correct / # labels. 
     test_accuracy += np.sum(predictions == labels) / len(labels)
