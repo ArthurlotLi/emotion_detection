@@ -3,9 +3,13 @@
 #
 # To support Emotion Avatar, output the test CSV with answers provided
 # by the model.
+#
+# Usage:
+# python emotion_detection_test_predictions.py 2 avatar
 
 from emotion_detection_harness import *
 
+_dataset_variants_location = "./dataset_variants"
 _model_variants_location = "models"
 _test_csv_name = "test_annotated.csv"
 _max_seq_length = 256
@@ -127,6 +131,23 @@ def train_model_load_device(use_cpu):
   
   return device
 
+# Given a variant number, loads train and test datasets. Returns
+# a none tuple of length two if an error is encountered.
+def load_test(variant_num):
+  print("[INFO] Loading emotion detection dataset variant " + str(variant_num) + ".")
+  test_set = None
+  test_location = _dataset_variants_location + "/" + str(variant_num) + ".csv"
+  try:
+    print("[DEBUG] Attempting to read dataset test file " + str(test_location) + ".")
+    test_set = pd.read_csv(test_location)
+  except Exception as e:
+    print("[ERROR] Failed to read files "+str(test_location)+". Error:")
+    print(e)
+    return None
+
+  print("[INFO] Train, Dev, and Test datasets loaded successfully.")
+  return test_set
+
 if __name__ == "__main__":
   parser = argparse.ArgumentParser()
   parser.add_argument("variant_num")
@@ -136,7 +157,6 @@ if __name__ == "__main__":
   variant_num = args.variant_num
   model_num = args.model_num
 
-  emotion_detection = EmotionDetectionHarness()
-  train_set, dev_set, test_set = emotion_detection.load_train_dev_test(variant_num = variant_num)
+  test_set = load_test(variant_num = variant_num)
   model, tokenizer, device = load_tokenizer_and_model(model_num=model_num)
   generate_test_csv(model, tokenizer, device, test_set)
