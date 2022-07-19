@@ -4,12 +4,6 @@ RoBERTa Large powered Natural Language Processing project. Given a line of text,
 
 Implemented as part of KotakeeOS Speech Server with a companion Emotion Representation class that is tied into the server's ability to output speech. That is to say, whenever the program says anything, an accompanying emotion will be predicted and presented to the user with a visual representation. 
 
-For more information, please see [Emotion Avatar](http://emotionavatar.com/).
-
-[![Emotion Avatar Website](https://i.imgur.com/mM2eWXg.png "Emotion Avatar Website")](http://emotionavatar.com/)
-
----
-
 Project background and concept informed by [1], which provided a wonderful overview of the subject.
 
 Models may be trained on a combination of datasets obtained from online resources, as well as homegrown personally labelled datasets. All possible combinations include subsets from the following datasets:
@@ -34,6 +28,13 @@ Models may be trained on a combination of datasets obtained from online resource
 
 7 SMILE dataset
   https://figshare.com/articles/smile_annotations_final_csv/3187909 
+
+---
+
+For more information, please see [Emotion Avatar](http://emotionavatar.com/).
+
+[![Emotion Avatar Website](https://i.imgur.com/mM2eWXg.png "Emotion Avatar Website")](http://emotionavatar.com/)
+
 
 ---
 
