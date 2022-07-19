@@ -5,7 +5,7 @@
 # by the model.
 #
 # Usage:
-# python emotion_detection_test_predictions.py 2 avatar
+# python emotion_detection_test_predictions.py avatar 2
 
 from emotion_detection_harness import *
 
